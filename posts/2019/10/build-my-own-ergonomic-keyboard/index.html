@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author"
+    content="[Shihpin Tseng]">
+<meta name="description"
+    content="Prelude After decades of coding, even worse, like many heavy Emacs user, I nearly don&amp;rsquo;t move my hands away from keyboard.
+I&amp;rsquo;m suffering from RSI (repetitive strain injury) problem.
+I have tried some ergonomic keyboards, like Goldtouch Adjustable, Infinity Ergodox, Model01. (Xah Lee have reviews of them.) However, the RSI still stay with me.
+As a asian, I have small hands. The ergonomic keyboards I used still require me to twist wrist." />
+<meta name="keywords" content="homepage, blog, science, informatics, development, programming, emacs, keyboard" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://tweakloop.com/posts/2019/10/build-my-own-ergonomic-keyboard/" />
+
+
+<title>
+    
+    Build My Own Ergonomic Keyboard :: Tweak Loop  — Tweaking make big things!
+    
+</title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://tweakloop.com/main.min.9384f2c2560d5ed00f26900b8aaf6af9bf12b6a393bd3fef9d19c583f51ded9b.css">
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://tweakloop.com/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://tweakloop.com/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://tweakloop.com/favicon-16x16.png">
+<link rel="manifest" href="https://tweakloop.com/site.webmanifest">
+<link rel="mask-icon" href="https://tweakloop.com/safari-pinned-tab.svg" color="#252627">
+<link rel="shortcut icon" href="https://tweakloop.com/favicon.ico">
+<meta name="theme-color" content="#252627"><meta itemprop="name" content="Build My Own Ergonomic Keyboard">
+<meta itemprop="description" content="Prelude After decades of coding, even worse, like many heavy Emacs user, I nearly don&rsquo;t move my hands away from keyboard.
+I&rsquo;m suffering from RSI (repetitive strain injury) problem.
+I have tried some ergonomic keyboards, like Goldtouch Adjustable, Infinity Ergodox, Model01. (Xah Lee have reviews of them.) However, the RSI still stay with me.
+As a asian, I have small hands. The ergonomic keyboards I used still require me to twist wrist.">
+
+
+<meta itemprop="datePublished" content="2019-10-30T00:00:00&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-31T00:50:19&#43;08:00" />
+<meta itemprop="wordCount" content="262">
+
+
+
+<meta itemprop="keywords" content="keyboard," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://tweakloop.com"/>
+
+<meta name="twitter:title" content="Build My Own Ergonomic Keyboard"/>
+<meta name="twitter:description" content="Prelude After decades of coding, even worse, like many heavy Emacs user, I nearly don&rsquo;t move my hands away from keyboard.
+I&rsquo;m suffering from RSI (repetitive strain injury) problem.
+I have tried some ergonomic keyboards, like Goldtouch Adjustable, Infinity Ergodox, Model01. (Xah Lee have reviews of them.) However, the RSI still stay with me.
+As a asian, I have small hands. The ergonomic keyboards I used still require me to twist wrist."/>
+
+
+
+<meta property="article:section" content="keyboard" />
+
+<meta property="article:published_time" content="2019-10-30 00:00:00 &#43;0800 CST" />
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://tweakloop.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=""></span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://tweakloop.com/posts/">Posts</a></li><li><a href="https://tweakloop.com/about/">About</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title"><a href="https://tweakloop.com/posts/2019/10/build-my-own-ergonomic-keyboard/">Build My Own Ergonomic Keyboard</a></h1>
+
+            
+
+            <div class="post-content">
+                
+
+<h2 id="prelude">Prelude</h2>
+
+<p>After decades of coding, even worse, like many heavy Emacs user, I nearly don&rsquo;t
+move my hands away from keyboard.</p>
+
+<p>I&rsquo;m suffering from RSI (repetitive strain injury) problem.</p>
+
+<p>I have tried some ergonomic keyboards, like Goldtouch Adjustable, Infinity
+Ergodox, Model01. (Xah Lee have <a href="http://xahlee.info/kbd/ergonomic%5Fkeyboards%5Findex.html" target="_blank">reviews</a> of them.) However, the RSI still stay
+with me.</p>
+
+<p>As a asian, I have small hands. The ergonomic keyboards I used still require me
+to twist wrist. So to build my own one is necessary.</p>
+
+<p>It&rsquo;s curve and the top row is higher then others. I named it <code>BluffCurve</code>.</p>
+
+<h2 id="the-photos">The Photos</h2>
+
+<p><img src="https://tweakloop.com/images/bluffcurve_whole.jpg" alt="" />
+<img src="https://tweakloop.com/images/bluffcurve_right.jpg" alt="" /></p>
+
+<h2 id="the-features">The Features</h2>
+
+<ul>
+<li>Curve</li>
+<li>Able to adjust the angle</li>
+<li>Thumb can control 5 keys</li>
+<li>Nearly no need to twist the wrist to press any key</li>
+</ul>
+
+<h2 id="the-building">The Building</h2>
+
+<p>The case is is base on swan_match&rsquo;s Colosseum60 <a href="https://swanmatch.booth.pm/items/1118886" target="_blank">Blender model</a>. And of course
+with the <a href="https://swanmatch.booth.pm/items/1073392" target="_blank">build kit</a> of Colosseum60. The tent is from <a href="https://ergodox-ez.com/products/tilt-tent-kit?variant=16101844419" target="_blank">Ergodox EZ</a>.</p>
+
+<p>Is there a pair of socks on your desk? Yes, it is. Just put some napkins into
+them and glue it to the desk. You see the right one can even share to the
+trackball. In fact, that&rsquo;s my proud part. :)</p>
+
+<p>I can give more information of the building, if you guys have interest to it.</p>
+
+<h2 id="how-i-feel">How I feel</h2>
+
+<p>I have used it to daily coding for about 1 month. It hard to say my RSI is
+recovering or not. But it really comfortable to typing.</p>
+
+<h2 id="credit">Credit</h2>
+
+<ul>
+<li>Thanks to <a href="https://twitter.com/swan%5Fmatch" target="_blank">SwanMatch</a>. He(or she) help me a lot when I building the hardware.</li>
+<li>Thanks to <a href="http://xahlee.info/kbd/keyboard%5Fblog.html" target="_blank">Xah Lee</a>. The review of the keyboards help me a lot.</li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://tweakloop.com/tags/keyboard">keyboard</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>262 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-10-30 00:00 &#43;0800</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h"></span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://tweakloop.com/posts/2019/10/upgrade-nixos-through-private-cache-proxy/">
+                                <span class="button__text">Upgrade NixOS through private cache proxy</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+
+        
+          <div id="comments" class="thin">
+
+
+	
+
+
+<script src="https://utteranc.es/client.js"
+        repo="deftsp/blog"
+        issue-term="title"
+        label=""
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+</div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2019</span>
+            
+                <span><a href="https://tweakloop.com">Shihpin Tseng</a></span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span> <a href="https://tweakloop.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://tweakloop.com/bundle.min.4c3fb12a087ceed4a52cb5d57068a9795c7069617a01ca70f788052ad66e1791779e6c72686e1dc0ca13dc03b0203204b6566bb0dd1ee80de2b7ff4d8fe53db2.js" integrity="sha512-TD&#43;xKgh87tSlLLXVcGipeVxwaWF6Acpw94gFKtZuF5F3nmxyaG4dwMoT3AOwIDIEtlZrsN0e6A3it/9Nj&#43;U9sg=="></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-151188207-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+
+
+    </body>
+</html>

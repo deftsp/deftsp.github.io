@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://tweakloop.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>keyboard</title>
+      <link>https://tweakloop.com/categories/keyboard/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://tweakloop.com/categories/keyboard/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>os</title>

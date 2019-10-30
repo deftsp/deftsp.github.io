@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://tweakloop.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Build My Own Ergonomic Keyboard</title>
+      <link>https://tweakloop.com/posts/2019/10/build-my-own-ergonomic-keyboard/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://tweakloop.com/posts/2019/10/build-my-own-ergonomic-keyboard/</guid>
+      <description>Prelude After decades of coding, even worse, like many heavy Emacs user, I nearly don&amp;rsquo;t move my hands away from keyboard.
+I&amp;rsquo;m suffering from RSI (repetitive strain injury) problem.
+I have tried some ergonomic keyboards, like Goldtouch Adjustable, Infinity Ergodox, Model01. (Xah Lee have reviews of them.) However, the RSI still stay with me.
+As a asian, I have small hands. The ergonomic keyboards I used still require me to twist wrist.</description>
+    </item>
     
     <item>
       <title>Upgrade NixOS through private cache proxy</title>

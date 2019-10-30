@@ -6,8 +6,75 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0800</lastBuildDate>
+        <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0800</lastBuildDate>
         <atom:link href="https://tweakloop.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Build My Own Ergonomic Keyboard</title>
+            <link>https://tweakloop.com/posts/2019/10/build-my-own-ergonomic-keyboard/</link>
+            <pubDate>Wed, 30 Oct 2019 00:00:00 +0800</pubDate>
+            
+            <guid>https://tweakloop.com/posts/2019/10/build-my-own-ergonomic-keyboard/</guid>
+            <description>Prelude After decades of coding, even worse, like many heavy Emacs user, I nearly don&amp;rsquo;t move my hands away from keyboard.
+I&amp;rsquo;m suffering from RSI (repetitive strain injury) problem.
+I have tried some ergonomic keyboards, like Goldtouch Adjustable, Infinity Ergodox, Model01. (Xah Lee have reviews of them.) However, the RSI still stay with me.
+As a asian, I have small hands. The ergonomic keyboards I used still require me to twist wrist.</description>
+            <content type="html"><![CDATA[
+
+<h2 id="prelude">Prelude</h2>
+
+<p>After decades of coding, even worse, like many heavy Emacs user, I nearly don&rsquo;t
+move my hands away from keyboard.</p>
+
+<p>I&rsquo;m suffering from RSI (repetitive strain injury) problem.</p>
+
+<p>I have tried some ergonomic keyboards, like Goldtouch Adjustable, Infinity
+Ergodox, Model01. (Xah Lee have <a href="http://xahlee.info/kbd/ergonomic%5Fkeyboards%5Findex.html" target="_blank">reviews</a> of them.) However, the RSI still stay
+with me.</p>
+
+<p>As a asian, I have small hands. The ergonomic keyboards I used still require me
+to twist wrist. So to build my own one is necessary.</p>
+
+<p>It&rsquo;s curve and the top row is higher then others. I named it <code>BluffCurve</code>.</p>
+
+<h2 id="the-photos">The Photos</h2>
+
+<p><img src="/images/bluffcurve_whole.jpg" alt="" />
+<img src="/images/bluffcurve_right.jpg" alt="" /></p>
+
+<h2 id="the-features">The Features</h2>
+
+<ul>
+<li>Curve</li>
+<li>Able to adjust the angle</li>
+<li>Thumb can control 5 keys</li>
+<li>Nearly no need to twist the wrist to press any key</li>
+</ul>
+
+<h2 id="the-building">The Building</h2>
+
+<p>The case is is base on swan_match&rsquo;s Colosseum60 <a href="https://swanmatch.booth.pm/items/1118886" target="_blank">Blender model</a>. And of course
+with the <a href="https://swanmatch.booth.pm/items/1073392" target="_blank">build kit</a> of Colosseum60. The tent is from <a href="https://ergodox-ez.com/products/tilt-tent-kit?variant=16101844419" target="_blank">Ergodox EZ</a>.</p>
+
+<p>Is there a pair of socks on your desk? Yes, it is. Just put some napkins into
+them and glue it to the desk. You see the right one can even share to the
+trackball. In fact, that&rsquo;s my proud part. :)</p>
+
+<p>I can give more information of the building, if you guys have interest to it.</p>
+
+<h2 id="how-i-feel">How I feel</h2>
+
+<p>I have used it to daily coding for about 1 month. It hard to say my RSI is
+recovering or not. But it really comfortable to typing.</p>
+
+<h2 id="credit">Credit</h2>
+
+<ul>
+<li>Thanks to <a href="https://twitter.com/swan%5Fmatch" target="_blank">SwanMatch</a>. He(or she) help me a lot when I building the hardware.</li>
+<li>Thanks to <a href="http://xahlee.info/kbd/keyboard%5Fblog.html" target="_blank">Xah Lee</a>. The review of the keyboards help me a lot.</li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>Upgrade NixOS through private cache proxy</title>
