@@ -1,0 +1,174 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Tweak Loop</title>
+        <link>https://tweakloop.com/posts/</link>
+        <description>Recent content in Posts on Tweak Loop</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0800</lastBuildDate>
+        <atom:link href="https://tweakloop.com/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Upgrade NixOS through private cache proxy</title>
+            <link>https://tweakloop.com/posts/2019/10/upgrade-nixos-through-private-cache-proxy/</link>
+            <pubDate>Tue, 29 Oct 2019 00:00:00 +0800</pubDate>
+            
+            <guid>https://tweakloop.com/posts/2019/10/upgrade-nixos-through-private-cache-proxy/</guid>
+            <description>When I upgrade NixOS for my mini-server with:
+$ sudo nixos-rebuild switch --upgrade It tried to download tons of packages from http://nixos-cache.example.com/ which is unbearable slow. Then I tried to build some of them instead of download the prebuild version1:
+sudo nixos-rebuild switch --option substitute false The upgrade failed when building gcc for not have enough free space. The SSD of the mini-server have only 5G.
+I have a server with socks5 proxy, which can access the cache.</description>
+            <content type="html"><![CDATA[
+
+<p>When I upgrade NixOS for my mini-server with:</p>
+<div class="highlight"><pre style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ sudo nixos-rebuild switch --upgrade</code></pre></div>
+<p>It tried to download tons of packages from <a href="http://nixos-cache.example.com/" target="_blank">http://nixos-cache.example.com/</a> which is
+unbearable slow. Then I tried to build some of them instead of download the
+prebuild version<sup class="footnote-ref" id="fnref:fn-1"><a href="#fn:fn-1">1</a></sup>:</p>
+<div class="highlight"><pre style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">sudo nixos-rebuild switch --option substitute false</code></pre></div>
+<p>The upgrade failed when building gcc for not have enough free space. The SSD of
+the mini-server have only 5G.</p>
+
+<p>I have a server with socks5 proxy, which can access the cache.nixos.org faster.
+It can be used as cache proxy to make sure the download reliable.</p>
+
+<p>Here is the whole steps.</p>
+
+<h2 id="create-cache-proxy-with-nginx"><span class="section-num">1</span> Create cache proxy with Nginx</h2>
+
+<div class="highlight"><div style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#454545">53
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#5f8700">worker_processes</span>  <span style="color:#00afaf">1</span>;
+<span style="color:#5f8700">master_process</span> <span style="color:#d75f00">off</span>;
+<span style="color:#5f8700">error_log</span> <span style="color:#00afaf">logs/error.log</span>;
+
+<span style="color:#5f8700">events</span> {
+    <span style="color:#d75f00">worker_connections</span> <span style="color:#00afaf">1024</span>;
+}
+
+<span style="color:#5f8700">http</span> {
+    <span style="color:#d75f00">map</span> <span style="color:#0087ff">$status</span> <span style="color:#0087ff">$cache_header</span> {
+        <span style="color:#d75f00">200</span>     <span style="color:#00afaf">&#34;public&#34;</span>;
+        <span style="color:#d75f00">302</span>     <span style="color:#00afaf">&#34;public&#34;</span>;
+        <span style="color:#d75f00">default</span> <span style="color:#00afaf">&#34;no-cache&#34;</span>;
+    }
+
+    <span style="color:#d75f00">server</span> {
+        <span style="color:#d75f00">listen</span> <span style="color:#00afaf">6699</span>;
+
+        <span style="color:#d75f00">resolver</span> <span style="color:#00afaf">8</span><span style="color:#00afaf">.8.8.8</span>;
+        <span style="color:#d75f00">set</span> <span style="color:#0087ff">$upstream_endpoint</span> <span style="color:#00afaf">http://cache.nixos.org</span>;
+
+        <span style="color:#d75f00">location</span> <span style="color:#00afaf">/</span> {
+            <span style="color:#d75f00">error_page</span> <span style="color:#00afaf">404</span> = <span style="color:#00afaf">@fallback</span>;
+        }
+
+        <span style="color:#d75f00">location</span> <span style="color:#00afaf">@fallback</span> {
+          <span style="color:#d75f00">proxy_pass</span> <span style="color:#0087ff">$upstream_endpoint</span>;
+          <span style="color:#4e4e4e"># proxy_cache cachecache;
+</span><span style="color:#4e4e4e"></span>          <span style="color:#d75f00">proxy_cache_valid</span>  <span style="color:#00afaf">200</span> <span style="color:#00afaf">302</span>  <span style="color:#00afaf">60m</span>;
+          <span style="color:#d75f00">expires</span> <span style="color:#00afaf">max</span>;
+          <span style="color:#d75f00">add_header</span> <span style="color:#00afaf">Cache-Control</span> <span style="color:#0087ff">$cache_header</span> <span style="color:#00afaf">always</span>;
+        }
+
+        <span style="color:#d75f00">location</span> ~ <span style="color:#af0000">^/nix-cache-info</span> {
+           <span style="color:#d75f00">proxy_store</span>        <span style="color:#d75f00">on</span>;
+           <span style="color:#d75f00">proxy_store_access</span> <span style="color:#00afaf">user:rw</span> <span style="color:#00afaf">group:rw</span> <span style="color:#00afaf">all:r</span>;
+           <span style="color:#d75f00">proxy_temp_path</span>    <span style="color:#00afaf">/data/nginx/nix-cache-info/temp</span>;
+           <span style="color:#d75f00">root</span>               <span style="color:#00afaf">/data/nginx/nix-cache-info/store</span>;
+
+           <span style="color:#d75f00">proxy_set_header</span> <span style="color:#00afaf">Host</span> <span style="color:#00afaf">&#34;cache.nixos.org&#34;</span>;
+           <span style="color:#d75f00">proxy_pass</span> <span style="color:#00afaf">https://cache.nixos.org</span>;
+         }
+
+         <span style="color:#d75f00">location</span> ~<span style="color:#af0000">^/nar/.+$</span> {
+           <span style="color:#d75f00">proxy_store</span>        <span style="color:#d75f00">on</span>;
+           <span style="color:#d75f00">proxy_store_access</span> <span style="color:#00afaf">user:rw</span> <span style="color:#00afaf">group:rw</span> <span style="color:#00afaf">all:r</span>;
+           <span style="color:#d75f00">proxy_temp_path</span>    <span style="color:#00afaf">/data/nginx/nar/temp</span>;
+           <span style="color:#d75f00">root</span>               <span style="color:#00afaf">/data/nginx/nar/store</span>;
+
+           <span style="color:#d75f00">proxy_set_header</span> <span style="color:#00afaf">Host</span> <span style="color:#00afaf">&#34;cache.nixos.org&#34;</span>;
+           <span style="color:#d75f00">proxy_pass</span> <span style="color:#00afaf">https://cache.nixos.org</span>;
+         }
+    }</code></pre></td></tr></table>
+</div>
+</div>
+
+<h2 id="upgrade-through-cache-proxy"><span class="section-num">2</span> Upgrade through cache proxy</h2>
+<div class="highlight"><pre style="color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">sudo nixos-rebuild switch --option binary-caches &#34;http://example.com:6699&#34;</code></pre></div>
+<h2 id="links"><span class="section-num">3</span> Links</h2>
+
+<ul>
+<li><a href="https://nixos.wiki/wiki/FAQ/Private%5FCache%5FProxy" target="_blank">FAQ/Private Cache Proxy - NixOS Wiki</a></li>
+<li><a href="https://mcwhirter.com.au/craige/blog/2019/NixOS%5FAppears%5Fto%5Fbe%5FAlways%5FBuilding%5FFrom%5FSource/" target="_blank">mcwhirter.com.au/craige/blog/2019/NixOS Appears to be Always Building From Source</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:fn-1"><a href="https://musteresel.github.io/posts/2018/05/nix-disable-binary-cache.html" target="_blank"> Disabling Nix substitutes (the “ binary cache ”) – musteresel&rsquo;s blog</a>
+ <a class="footnote-return" href="#fnref:fn-1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	
+	<sitemap>
+	   	<loc>https://tweakloop.com/en/sitemap.xml</loc>
+		
+	   	<lastmod>2019-10-30T16:02:45+08:00</lastmod>
+		
+	</sitemap>
+	
+	<sitemap>
+	   	<loc>https://tweakloop.com/zh/sitemap.xml</loc>
+		
+	</sitemap>
+	
+</sitemapindex>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>openresty on Tweak Loop</title>
+    <link>https://tweakloop.com/tags/openresty/</link>
+    <description>Recent content in openresty on Tweak Loop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 29 Oct 2019 00:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://tweakloop.com/tags/openresty/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Upgrade NixOS through private cache proxy</title>
+      <link>https://tweakloop.com/post/upgrade-nixos-through-private-cache-proxy/</link>
+      <pubDate>Tue, 29 Oct 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://tweakloop.com/post/upgrade-nixos-through-private-cache-proxy/</guid>
+      <description>When I upgrade NixOS of for my mini-server with:
+$ sudo nixos-rebuild switch --upgrade It&amp;rsquo;ll download tons of packages from http://nixos-cache.example.com/ which is unbearable slow. Then I tried to build some of them instead of download the prebuild version1:
+sudo nixos-rebuild switch --option substitute false However, the SSD of the mini-server have only 5G. The upgrade failed when building gcc.
+I have a server with socks5 proxy, which can access the cache.</description>
+    </item>
+    
+    <item>
+      <title>Upgrade NixOS through private cache proxy</title>
+      <link>https://tweakloop.com/posts/2019/10/upgrade-nixos-through-private-cache-proxy/</link>
+      <pubDate>Tue, 29 Oct 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://tweakloop.com/posts/2019/10/upgrade-nixos-through-private-cache-proxy/</guid>
+      <description>When I upgrade NixOS for my mini-server with:
+$ sudo nixos-rebuild switch --upgrade It tried to download tons of packages from http://nixos-cache.example.com/ which is unbearable slow. Then I tried to build some of them instead of download the prebuild version1:
+sudo nixos-rebuild switch --option substitute false The upgrade failed when building gcc for not have enough free space. The SSD of the mini-server have only 5G.
+I have a server with socks5 proxy, which can access the cache.</description>
+    </item>
+    
+  </channel>
+</rss>
